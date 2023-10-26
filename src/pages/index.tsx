@@ -7,28 +7,20 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Next.js advanced start template.</title>
-
-        <meta
-          name="description"
-          content="Use tailwind css, eslint, prettier & absolute imports instantly.
-            Easily extendable zero-config template for pros and beginners."
-        />
-
+        <title>MiniGPT</title>
+        <meta name="description" content="Minimalistic UI for ChatGPT" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="flex min-h-screen justify-center bg-gradient-to-b from-gray-50 via-gray-50 to-gray-100 py-20">
         <div>
           <h1 className="px-5 text-center text-4xl font-bold leading-tight tracking-tight sm:mt-4 sm:text-6xl">
-            Next.js
-            <br />
-            Advanced Starter
+            MiniGPT
           </h1>
 
           <h2 className="mx-auto mt-8 max-w-4xl px-10 text-center text-base tracking-tight text-gray-600 sm:text-2xl md:mt-5 md:text-2xl">
-            Tailwind CSS 3.0, ESLint & Prettier without a single line of config!
-            Easily extendable zero-config template for pros and beginners.
+            A minimalistic ChatGPT UI that lets you use your own OpenAI API key.
+            All of the data is stored locally within your browser.
           </h2>
 
           <div className="px-4 sm:px-0">
@@ -82,12 +74,12 @@ export default function Home() {
               </div>
             </section>
             <p className="mt-6 text-center text-xs font-medium text-gray-600">
-              Built by{" "}
+              Made with <span style={{ color: "#e25555" }}>&#9829;</span> by{" "}
               <a
                 className="font-medium text-blue-600 transition duration-150 ease-in-out hover:text-blue-500 focus:underline focus:outline-none"
-                href="https://twitter.com/agctyz"
+                href="https://tanmaypathak.com"
               >
-                @agctyz
+                Tanmay
               </a>
             </p>
           </div>
