@@ -14,6 +14,7 @@
     "test-all": "yarn lint && yarn type-check && yarn test"
   },
   "dependencies": {
+    "@uidotdev/usehooks": "^2.4.1",
     "next": "12.1.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
