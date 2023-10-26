@@ -1,16 +1,13 @@
 import React from "react"
 
-import Head from "next/head"
 import Link from "next/link"
+
+import Head from "../components/Head"
 
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>MiniGPT</title>
-        <meta name="description" content="Minimalistic UI for ChatGPT" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <Head />
 
       <main className="flex min-h-screen justify-center bg-gradient-to-b from-gray-50 via-gray-50 to-gray-100 py-20">
         <div>
@@ -85,7 +82,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-    </div>
+    </>
   )
 }
 
