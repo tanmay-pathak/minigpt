@@ -1,10 +1,7 @@
 import React from "react"
-
 import NextHead from "next/head"
 
-type Props = {}
-
-const Head = (props: Props) => {
+const Head = () => {
   return (
     <NextHead>
       <title>MiniGPT</title>

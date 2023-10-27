@@ -1,12 +1,10 @@
 import React from "react"
 import { useLocalStorage } from "@uidotdev/usehooks"
 
-type Props = {}
-
-const Body = (props: Props) => {
+const Body = () => {
   const [value, setValue] = useLocalStorage("test", [])
 
-  return <div className="px-4 sm:px-0"></div>
+  return <div className="flex-1 bg-[#343541]"></div>
 }
 
 export default Body
