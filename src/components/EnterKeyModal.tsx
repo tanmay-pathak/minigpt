@@ -10,6 +10,7 @@ const EnterKeyModal = ({ onSubmit }: Props) => {
         <form
           onSubmit={(e) => {
             e.preventDefault()
+            // @ts-ignore
             onSubmit(e.target.elements.apiKey.value)
           }}
         >

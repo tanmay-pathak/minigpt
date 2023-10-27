@@ -9,9 +9,5 @@
     "typescript",
     "typescriptreact"
   ],
-  "cSpell.words": [
-    "openai",
-    "uidotdev",
-    "usehooks"
-  ]
+  "cSpell.words": ["openai", "uidotdev", "usehooks"]
 }
