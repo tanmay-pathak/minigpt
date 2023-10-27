@@ -1,5 +1,3 @@
-import React from "react"
-
 const Footer = () => {
   return (
     <p className="fixed bottom-0 left-0 right-0 z-10 mt-10 mb-1 text-center text-xs font-medium text-gray-600">

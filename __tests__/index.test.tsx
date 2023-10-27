@@ -8,7 +8,7 @@ describe("Home", () => {
 
     expect(screen.getByText("Copy Template from GitHub")).toHaveAttribute(
       "href",
-      "https://github.com/agcty/nextjs-advanced-starter"
+      "https://github.com/agcty/nextjs-advanced-starter",
     )
   })
 })

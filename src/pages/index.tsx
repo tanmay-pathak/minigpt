@@ -1,8 +1,7 @@
-import React from "react"
-import dynamic from "next/dynamic"
-import Head from "@components/Head"
 import Footer from "@components/Footer"
+import Head from "@components/Head"
 import NavBar from "@components/NavBar"
+import dynamic from "next/dynamic"
 
 const Body = dynamic(() => import("@components/Body"), {
   ssr: false,

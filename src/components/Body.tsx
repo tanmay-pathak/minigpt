@@ -1,7 +1,6 @@
-import React from "react"
-import { useLocalStorage } from "@uidotdev/usehooks"
 import ChatBubble from "@components/ChatBubble"
 import TextBox from "@components/TextBox"
+import { useLocalStorage } from "@uidotdev/usehooks"
 
 const Body = () => {
   const [conversation, setConversation] = useLocalStorage("conversation", [

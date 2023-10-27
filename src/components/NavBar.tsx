@@ -1,5 +1,3 @@
-import React from "react"
-
 const NavBar = () => {
   return (
     <header className="top-0 left-0 right-0 z-10 bg-[#343541] text-white">
