@@ -2,9 +2,9 @@ import React from "react"
 import { useLocalStorage } from "@uidotdev/usehooks"
 
 const Body = () => {
-  const [value, setValue] = useLocalStorage("test", [])
+  const [conversation, setConversation] = useLocalStorage("conversation", [])
 
-  return <div className="flex-1 bg-[#343541]"></div>
+  return <div className="m-1 text-center">Hey</div>
 }
 
 export default Body

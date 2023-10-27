@@ -10,11 +10,11 @@ const Body = dynamic(() => import("@components/Body"), {
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col gap-0">
       <Head />
       <NavBar />
       <Body />
       <Footer />
-    </>
+    </div>
   )
 }
