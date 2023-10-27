@@ -4,15 +4,18 @@ import TextBar from "@components/TextBar"
 import { useLocalStorage } from "@uidotdev/usehooks"
 import OpenAI from "openai"
 import { useState } from "react"
+import {
+  DEFAULT_SYSTEM_PROMPT,
+  LOCAL_STORAGE_API_KEY,
+  LOCAL_STORAGE_CONVERSATION_KEY,
+} from "../constants"
 
 const Body = () => {
-  const [apiKey, setApiKey] = useLocalStorage("apiKey", null)
-  const [conversation, setConversation] = useLocalStorage("conversation", [
-    {
-      role: "system",
-      content: "You are a helpful assistant.",
-    },
-  ])
+  const [apiKey, setApiKey] = useLocalStorage(LOCAL_STORAGE_API_KEY, null)
+  const [conversation, setConversation] = useLocalStorage(
+    LOCAL_STORAGE_CONVERSATION_KEY,
+    [DEFAULT_SYSTEM_PROMPT],
+  )
   const [showModal, setShowModal] = useState(!apiKey)
 
   const api = new OpenAI({
@@ -46,6 +49,9 @@ const Body = () => {
   return (
     <div className="m-1 text-center">
       {conversation.map((msg, i) => {
+        if (i == 0) {
+          return
+        }
         const className = msg.role == "user" ? "flex flex-row-reverse" : "flex"
         return (
           <div className={className} key={i}>
@@ -53,7 +59,10 @@ const Body = () => {
           </div>
         )
       })}
-      <TextBar onSubmit={handleSend} onClear={() => setConversation([])} />
+      <TextBar
+        onSubmit={handleSend}
+        onClear={() => setConversation([DEFAULT_SYSTEM_PROMPT])}
+      />
       {showModal && <EnterKeyModal onSubmit={handleApiKeySubmit} />}
     </div>
   )
