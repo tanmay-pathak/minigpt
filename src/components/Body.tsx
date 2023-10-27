@@ -1,18 +1,21 @@
 import React from "react"
 import { useLocalStorage } from "@uidotdev/usehooks"
 import ChatBubble from "@components/ChatBubble"
+import TextBox from "@components/TextBox"
 
 const Body = () => {
-  const [conversation, setConversation] = useLocalStorage("conversation", [])
-
-  const messages = [
+  const [conversation, setConversation] = useLocalStorage("conversation", [
     { message: "Hi", isUser: false },
     { message: "Hello", isUser: true },
-  ]
+  ])
+
+  const handleSend = (text) => {
+    setConversation((msg) => [...msg, { message: text, isUser: true }])
+  }
 
   return (
     <div className="m-1 text-center">
-      {messages.map((msg, i) => {
+      {conversation.map((msg, i) => {
         const className = msg.isUser ? "flex flex-row-reverse" : "flex"
         return (
           <div className={className} key={i}>
@@ -20,6 +23,7 @@ const Body = () => {
           </div>
         )
       })}
+      <TextBox onSubmit={handleSend} />
     </div>
   )
 }

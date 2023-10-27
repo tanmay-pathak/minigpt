@@ -8,5 +8,9 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
+  ],
+  "cSpell.words": [
+    "uidotdev",
+    "usehooks"
   ]
 }
