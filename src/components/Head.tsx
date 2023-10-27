@@ -6,7 +6,7 @@ const Head = () => {
     <NextHead>
       <title>MiniGPT</title>
       <meta name="description" content="Minimalistic UI for ChatGPT" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.svg" />
     </NextHead>
   )
 }
