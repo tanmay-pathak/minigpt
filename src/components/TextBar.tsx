@@ -2,9 +2,10 @@ import React, { useState } from "react"
 
 interface TextBoxProps {
   onSubmit: (text: string) => void
+  onClear: () => void
 }
 
-const TextBox = ({ onSubmit }: TextBoxProps) => {
+const TextBar = ({ onSubmit, onClear }: TextBoxProps) => {
   const [text, setText] = useState("")
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,6 +22,12 @@ const TextBox = ({ onSubmit }: TextBoxProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="fixed bottom-0 flex w-full p-6">
+      <button
+        className="mr-3 bg-white text-black hover:bg-grey"
+        onClick={onClear}
+      >
+        New
+      </button>
       <input
         type="text"
         value={text}
@@ -37,4 +44,4 @@ const TextBox = ({ onSubmit }: TextBoxProps) => {
   )
 }
 
-export default TextBox
+export default TextBar

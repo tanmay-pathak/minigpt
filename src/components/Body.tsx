@@ -1,6 +1,6 @@
 import ChatBubble from "@components/ChatBubble"
 import EnterKeyModal from "@components/EnterKeyModal"
-import TextBox from "@components/TextBox"
+import TextBar from "@components/TextBar"
 import { useLocalStorage } from "@uidotdev/usehooks"
 import OpenAI from "openai"
 import { useState } from "react"
@@ -53,7 +53,7 @@ const Body = () => {
           </div>
         )
       })}
-      <TextBox onSubmit={handleSend} />
+      <TextBar onSubmit={handleSend} onClear={() => setConversation([])} />
       {showModal && <EnterKeyModal onSubmit={handleApiKeySubmit} />}
     </div>
   )
