@@ -1,6 +1,7 @@
 import ChatBubble from "@components/ChatBubble"
 import EnterKeyModal from "@components/EnterKeyModal"
 import TextBar from "@components/TextBar"
+import Welcome from "@components/Welcome"
 import { useLocalStorage } from "@uidotdev/usehooks"
 import OpenAI from "openai"
 import { useState } from "react"
@@ -48,6 +49,7 @@ const Body = () => {
 
   return (
     <div className="m-1 text-center">
+      {conversation.length == 1 && <Welcome />}
       {conversation.map((msg, i) => {
         if (i == 0) {
           return
