@@ -21,7 +21,10 @@ const TextBar = ({ onSubmit, onClear }: TextBoxProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="fixed bottom-0 flex w-full p-6">
+    <form
+      onSubmit={handleSubmit}
+      className="bg-white fixed bottom-0 flex w-full p-6"
+    >
       <button
         className="mr-3 bg-white text-black hover:bg-grey"
         onClick={onClear}
