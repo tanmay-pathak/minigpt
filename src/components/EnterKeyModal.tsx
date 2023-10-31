@@ -1,10 +1,22 @@
+import { useEffect } from "react"
+
 type Props = {
   onSubmit: (key: string) => void
 }
 
 const EnterKeyModal = ({ onSubmit }: Props) => {
+  useEffect(() => {
+    // Disable scroll on mount
+    document.body.style.overflow = "hidden"
+
+    // Enable scroll on unmount
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [])
+
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-50 flex justify-center items-center">
+    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center z-20">
       <div className="bg-white p-6 rounded-lg shadow-lg">
         <h2 className="text-lg font-medium mb-4">Enter your API key</h2>
         <form
