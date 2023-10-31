@@ -48,13 +48,16 @@ const Body = () => {
   }
 
   return (
-    <div className="m-1 text-center">
+    <div className="mx-3 mt-10 mb-28 text-center">
       {conversation.length == 1 && <Welcome />}
       {conversation.map((msg, i) => {
         if (i == 0) {
           return
         }
-        const className = msg.role == "user" ? "flex flex-row-reverse" : "flex"
+        const className =
+          msg.role == "user"
+            ? "flex flex-row-reverse text-right"
+            : "flex text-left"
         return (
           <div className={className} key={i}>
             <ChatBubble message={msg.content} isUser={msg.role == "user"} />
