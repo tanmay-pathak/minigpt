@@ -28,6 +28,7 @@ const TextBar = ({ onSubmit, onClear }: TextBoxProps) => {
       <button
         className="mr-3 bg-white text-black hover:bg-grey"
         onClick={onClear}
+        type={"button"}
       >
         New
       </button>
