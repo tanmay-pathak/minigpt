@@ -54,7 +54,10 @@ const Body = () => {
         if (i == 0) {
           return
         }
-        const className = msg.role == "user" ? "flex flex-row-reverse" : "flex"
+        const className =
+          msg.role == "user"
+            ? "flex flex-row-reverse text-right"
+            : "flex text-left"
         return (
           <div className={className} key={i}>
             <ChatBubble message={msg.content} isUser={msg.role == "user"} />
