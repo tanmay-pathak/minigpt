@@ -48,7 +48,7 @@ const Body = () => {
   }
 
   return (
-    <div className="m-1 text-center">
+    <div className="mx-3 mt-10 mb-28 text-center">
       {conversation.length == 1 && <Welcome />}
       {conversation.map((msg, i) => {
         if (i == 0) {
