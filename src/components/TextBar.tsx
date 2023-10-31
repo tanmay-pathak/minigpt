@@ -37,6 +37,7 @@ const TextBar = ({ onSubmit, onClear }: TextBoxProps) => {
         value={text}
         onChange={handleChange}
         className="w-full rounded-xl"
+        placeholder="Your message here"
       />
       <button
         type="submit"
