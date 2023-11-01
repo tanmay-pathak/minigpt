@@ -31,15 +31,21 @@ const Body = () => {
       return conversationSoFar
     })
 
-    const response = await api.chat.completions.create({
+    const completion = await api.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: conversationSoFar,
+      stream: true,
     })
 
-    setConversation(() => [
-      ...conversationSoFar,
-      { content: response.choices[0].message.content, role: "system" },
-    ])
+    const response = { content: "", role: "system" }
+    conversationSoFar.push(response)
+
+    for await (const chunk of completion) {
+      if (chunk.choices[0].delta.content) {
+        response.content += chunk.choices[0].delta.content
+      }
+      setConversation(conversationSoFar)
+    }
   }
 
   const handleApiKeySubmit = (apiKey: string): void => {
