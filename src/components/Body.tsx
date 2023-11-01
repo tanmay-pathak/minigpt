@@ -4,7 +4,7 @@ import TextBar from "@components/TextBar"
 import Welcome from "@components/Welcome"
 import { useLocalStorage } from "@uidotdev/usehooks"
 import OpenAI from "openai"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import {
   DEFAULT_SYSTEM_PROMPT,
   LOCAL_STORAGE_API_KEY,
@@ -18,6 +18,13 @@ const Body = () => {
     [DEFAULT_SYSTEM_PROMPT],
   )
   const [showModal, setShowModal] = useState(!apiKey)
+  const messagesEndRef = useRef(null)
+
+  const scrollToBottom = () => {
+    messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  useEffect(scrollToBottom, [conversation])
 
   const api = new OpenAI({
     apiKey: apiKey,
@@ -31,15 +38,21 @@ const Body = () => {
       return conversationSoFar
     })
 
-    const response = await api.chat.completions.create({
+    const completion = await api.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: conversationSoFar,
+      stream: true,
     })
 
-    setConversation(() => [
-      ...conversationSoFar,
-      { content: response.choices[0].message.content, role: "system" },
-    ])
+    const response = { content: "", role: "system" }
+    conversationSoFar.push(response)
+
+    for await (const chunk of completion) {
+      if (chunk.choices[0].delta.content) {
+        response.content += chunk.choices[0].delta.content
+      }
+      setConversation(conversationSoFar)
+    }
   }
 
   const handleApiKeySubmit = (apiKey: string): void => {
@@ -64,6 +77,7 @@ const Body = () => {
           </div>
         )
       })}
+      <div ref={messagesEndRef} />
       <TextBar
         onSubmit={handleSend}
         onClear={() => setConversation([DEFAULT_SYSTEM_PROMPT])}
