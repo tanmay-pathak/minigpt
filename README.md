@@ -1,4 +1,3 @@
-
 # MiniGPT
 
 A minimalistic ChatGPT UI. Try it out here ([minigpt.pages.dev](https://minigpt.pages.dev))
@@ -9,7 +8,6 @@ A minimalistic ChatGPT UI. Try it out here ([minigpt.pages.dev](https://minigpt.
 - Your conversations are stored locally
 - Minimalistic UI
 - PWA support
-
 
 ## Tech Stack
 
@@ -30,8 +28,6 @@ Start the server
   npm run dev
 ```
 
-
 ## Author
 
 [Tanmay Pathak](https://tanmaypathak.com)
-
