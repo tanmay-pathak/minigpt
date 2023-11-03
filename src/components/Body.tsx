@@ -6,16 +6,16 @@ import { useLocalStorage } from "@uidotdev/usehooks"
 import OpenAI from "openai"
 import { useEffect, useRef, useState } from "react"
 import {
-  DEFAULT_SYSTEM_PROMPT,
   LOCAL_STORAGE_API_KEY,
   LOCAL_STORAGE_CONVERSATION_KEY,
+  MODEL,
 } from "../constants"
 
 const Body = () => {
   const [apiKey, setApiKey] = useLocalStorage(LOCAL_STORAGE_API_KEY, null)
   const [conversation, setConversation] = useLocalStorage(
     LOCAL_STORAGE_CONVERSATION_KEY,
-    [DEFAULT_SYSTEM_PROMPT],
+    [],
   )
   const [showModal, setShowModal] = useState(!apiKey)
   const messagesEndRef = useRef(null)
@@ -39,7 +39,7 @@ const Body = () => {
     })
 
     const completion = await api.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: MODEL,
       messages: conversationSoFar,
       stream: true,
     })
@@ -62,26 +62,25 @@ const Body = () => {
 
   return (
     <div className="mx-3 mt-10 mb-28 text-center">
-      {conversation.length == 1 && <Welcome />}
-      {conversation.map((msg, i) => {
-        if (i == 0) {
-          return
-        }
-        const className =
-          msg.role == "user"
-            ? "flex flex-row-reverse text-right"
-            : "flex text-left"
-        return (
-          <div className={className} key={i}>
-            <ChatBubble message={msg.content} isUser={msg.role == "user"} />
-          </div>
-        )
-      })}
+      {conversation.length == 0 ? (
+        <Welcome />
+      ) : (
+        <>
+          {conversation.map((msg, i) => {
+            const className =
+              msg.role == "user"
+                ? "flex flex-row-reverse text-right"
+                : "flex text-left"
+            return (
+              <div className={className} key={i}>
+                <ChatBubble message={msg.content} isUser={msg.role == "user"} />
+              </div>
+            )
+          })}
+        </>
+      )}
       <div ref={messagesEndRef} />
-      <TextBar
-        onSubmit={handleSend}
-        onClear={() => setConversation([DEFAULT_SYSTEM_PROMPT])}
-      />
+      <TextBar onSubmit={handleSend} onClear={() => setConversation([])} />
       {showModal && <EnterKeyModal onSubmit={handleApiKeySubmit} />}
     </div>
   )

@@ -1,7 +1,7 @@
 {
     "theme_color": "#343541",
     "background_color": "#FFFFFF",
-    "display": "standalone",
+    "display": "fullscreen",
     "scope": "/",
     "start_url": "/",
     "name": "MiniGPT",
