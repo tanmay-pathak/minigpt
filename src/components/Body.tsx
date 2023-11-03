@@ -2,8 +2,8 @@ import ChatBubble from "@components/ChatBubble"
 import EnterKeyModal from "@components/EnterKeyModal"
 import TextBar from "@components/TextBar"
 import Welcome from "@components/Welcome"
+import { useApi } from "@hooks/api"
 import { useLocalStorage } from "@uidotdev/usehooks"
-import OpenAI from "openai"
 import { useEffect, useRef, useState } from "react"
 import {
   LOCAL_STORAGE_API_KEY,
@@ -19,17 +19,13 @@ const Body = () => {
   )
   const [showModal, setShowModal] = useState(!apiKey)
   const messagesEndRef = useRef(null)
+  const { fetchApi } = useApi(apiKey, MODEL)
 
   const scrollToBottom = () => {
     messagesEndRef?.current?.scrollIntoView({ behavior: "smooth" })
   }
 
   useEffect(scrollToBottom, [conversation])
-
-  const api = new OpenAI({
-    apiKey: apiKey,
-    dangerouslyAllowBrowser: true,
-  })
 
   const handleSend = async (text) => {
     let conversationSoFar = []
@@ -38,21 +34,12 @@ const Body = () => {
       return conversationSoFar
     })
 
-    const completion = await api.chat.completions.create({
-      model: MODEL,
-      messages: conversationSoFar,
-      stream: true,
+    fetchApi(conversationSoFar).then((result) => {
+      setConversation(() => [
+        ...conversationSoFar,
+        { content: result.choices[0].message.content, role: "system" },
+      ])
     })
-
-    const response = { content: "", role: "system" }
-    conversationSoFar.push(response)
-
-    for await (const chunk of completion) {
-      if (chunk.choices[0].delta.content) {
-        response.content += chunk.choices[0].delta.content
-      }
-      setConversation(conversationSoFar)
-    }
   }
 
   const handleApiKeySubmit = (apiKey: string): void => {
