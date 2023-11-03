@@ -2,7 +2,7 @@ import ChatBubble from "@components/ChatBubble"
 import EnterKeyModal from "@components/EnterKeyModal"
 import TextBar from "@components/TextBar"
 import Welcome from "@components/Welcome"
-import { useApi } from "@hooks/api"
+import { useApi } from "@hooks/useApi"
 import { useLocalStorage } from "@uidotdev/usehooks"
 import { useEffect, useRef, useState } from "react"
 import {

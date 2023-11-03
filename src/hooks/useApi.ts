@@ -1,6 +1,8 @@
+import { OPENAI_URL } from "@constants"
+
 export const useApi = (apiKey: string, modelName: string) => {
   const fetchApi = async (conversation: string[]) => {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch(OPENAI_URL, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
