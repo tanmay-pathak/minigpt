@@ -14,6 +14,10 @@ A minimalistic ChatGPT UI. Try it out here ([minigpt.pages.dev](https://minigpt.
 - NextJS
 - Tailwind CSS
 
+## Screenshots
+![](/images/home.jpg)
+![](/images/chat.jpg)
+
 ## Run Locally
 
 Install dependencies
