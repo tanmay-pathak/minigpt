@@ -1,4 +1,3 @@
-import Footer from "@components/Footer"
 import Head from "@components/Head"
 import NavBar from "@components/NavBar"
 import dynamic from "next/dynamic"
@@ -13,7 +12,6 @@ export default function Home() {
       <Head />
       <NavBar />
       <Body />
-      <Footer />
     </div>
   )
 }

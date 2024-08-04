@@ -1,3 +1,4 @@
+import { Plus } from "lucide-react"
 import React, { useState } from "react"
 
 interface TextBoxProps {
@@ -23,14 +24,14 @@ const TextBar = ({ onSubmit, onClear }: TextBoxProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white fixed bottom-0 flex w-full p-6"
+      className="bg-white fixed bottom-0 flex w-full pr-6 pb-3"
     >
       <button
         className="mr-3 bg-white text-black hover:bg-grey"
         onClick={onClear}
         type={"button"}
       >
-        New
+        <Plus />
       </button>
       <input
         type="text"
